@@ -17,3 +17,4 @@ legend('Fourier Series', 'Function Plot');
 hold off 
 end 
 disp(strcat('Fourier series with', num2str(n),'harmonics is:',char(Fx)))
+
