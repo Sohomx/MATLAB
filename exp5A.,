@@ -1,0 +1,10 @@
+clearvars clc 
+syms y(t) s Y Dy(t) 
+C = input('Enter the coeff. of D2y, Dy and y as an array: '); 
+F = input('Enter the non-homogeneous part f(t): '); 
+IC = input('Enter the initial conditions [y0 Dy0]: '); 
+DEq = C(1)*diff(y,2)+C(2)*diff(y,1)+C(3)*y - F; 
+LDEq = laplace(DEq); 
+LDEq1 = subs(LDEq,{laplace(y(t),t,s),y(0),subs(diff(y(t), t), t, 0)},   {Y, IC(1),IC(2)}); 
+Ys = solve(LDEq1,Y); y = collect(simplify(ilaplace(Ys))); disp('The solution of the given DE is: '); disp(char(y)) fplot(y) 
+title('Plot of the Solution') 
